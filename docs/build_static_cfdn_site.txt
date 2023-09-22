@@ -1,0 +1,24 @@
+# infrastructure 
+can use the AWS Solutions Constructs aws-cloudfront-s3 package for the bucket and cfdn deployment. 
+need to upload the built site files (react example below) to the s3 bucket seperately (invalidate files if updating).
+
+## react deployment example
+# create react app
+``npx create-react-app instance-controller --template typescript
+``
+# build the files into a static site
+``npm run build
+``
+# upload the built files to s3
+``aws s3 sync build/ s3://my-bucket --profile my-profile
+``
+# can add this line to package.json
+``"deploy": "aws s3 sync build/ s3://my-bucket --profile my-profile"``
+#then deploy with
+``npm run deploy
+``
+# stop warning with 
+``npm i --devDependencies @babel/plugin-proposal-private-property-in-object``
+
+# links
+AWS Solutions Constructs [https://docs.aws.amazon.com/solutions/latest/constructs/aws-cloudfront-s3.html]
