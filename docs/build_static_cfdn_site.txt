@@ -13,7 +13,8 @@ need to upload the built site files (react example below) to the s3 bucket seper
 ``aws s3 sync build/ s3://my-bucket --profile my-profile
 ``
 # can add this line to package.json
-``"deploy": "aws s3 sync build/ s3://my-bucket --profile my-profile"``
+``"deploy": "npm run build && aws s3 sync build/ s3://instancecontrollerstack-instancecontrollerwebsite-6mxa7ao2mo8s --profile apps-sb && aws cloudfront create-invalidation --distribution-id ED2W6G6YWLDTR --paths \"/*\"\"/*/\" --profile apps-sb"
+``
 #then deploy with
 ``npm run deploy
 ``

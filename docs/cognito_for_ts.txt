@@ -1,0 +1,25 @@
+# cdk required
+        const pool = new cdk.aws_cognito.UserPool(this, 'Pool');
+        pool.addClient('app-client', {
+            oAuth: {
+                flows: {
+                    authorizationCodeGrant: true,
+                },
+                scopes: [cdk.aws_cognito.OAuthScope.OPENID],
+                callbackUrls: [
+                    'https://d3ldmqb2ua8wew.cloudfront.net/welcome',
+                    'https://d3ldmqb2ua8wew.cloudfront.net/',
+                ],
+                logoutUrls: [
+                    'https://d3ldmqb2ua8wew.cloudfront.net/signin',
+                    'https://d3ldmqb2ua8wew.cloudfront.net/',
+                ],
+            },
+        });
+
+# ts packages
+npm i @aws-amplify/ui-react aws-amplify
+
+#links
+- AWS Official Docs [https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/authenticate-react-application-users-by-using-amazon-cognito-and-aws-amplify.html]
+- Guide with outdated pacakaged [https://dev.to/aws-builders/how-to-use-amazon-cognito-with-reacttypescript-4elj]
